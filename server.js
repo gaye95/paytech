@@ -11,14 +11,10 @@ const app = express();
 // Récupère l'URL du frontend depuis les variables d'environnement
 // En production, cette variable sera définie sur Render.
 // En développement local, elle peut être définie dans .env ou par défaut à localhost.
-const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:8080";
 
 // Middleware pour permettre les requêtes cross-origin (CORS)
 // Ceci est crucial pour que votre frontend puisse communiquer avec ce backend
-app.use(cors({
-  origin: allowedOrigin, // Autorise uniquement l'origine spécifiée
-  optionsSuccessStatus: 200 // Pour la compatibilité des anciens navigateurs
-}));
+app.use(cors());
 
 // Middleware pour parser les corps de requête JSON
 app.use(express.json());
